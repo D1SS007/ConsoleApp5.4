@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace ConsoleApp5._4
@@ -48,13 +48,9 @@ namespace ConsoleApp5._4
         static void AddFile(List<string> files)
         {
             Console.WriteLine("\nВведите фамилию и должность.");
-
             files.Add(Console.ReadLine());
-
             Console.WriteLine("\nФайл успешно добавлен.\nДля продолжения нажмите любую клавишу.");
-
             Console.ReadKey();
-
             Console.Clear();
         }
 
@@ -68,19 +64,14 @@ namespace ConsoleApp5._4
                 {
                     Console.WriteLine(file);
                 }
-
                 Console.WriteLine("\nДля продолжения нажмите любую клавишу.");
-
                 Console.ReadKey();
-
                 Console.Clear();
             }
             else
             {
-                Console.WriteLine("Файлов нет.\nДля продолжения нажмите любую клавишу.");
-                
+                Console.WriteLine("Файлов нет.\nДля продолжения нажмите любую клавишу.");                
                 Console.ReadKey();
-
                 Console.Clear();
             }
             
@@ -89,17 +80,20 @@ namespace ConsoleApp5._4
         static void RemoveFile(List<string> files)
         {
             ShowAllFiles(files);
-
             Console.WriteLine("Какой по номеру файл удалить?");
+            string userInput = Console.ReadLine();
 
-            int userInput = Convert.ToInt32(Console.ReadLine());
-            files.RemoveAt(userInput);
-
-            Console.WriteLine("Файл полностью удален.\nДля продолжения нажмите любую клавишу.");
-
-            Console.ReadKey();
-
-            Console.Clear();
+            if(int.TryParse(userInput, out int value))
+            {
+                files.RemoveAt(value);
+                Console.WriteLine("Файл полностью удален.\nДля продолжения нажмите любую клавишу.");
+                Console.ReadKey();
+                Console.Clear();
+            }
+            else
+            {
+                Console.WriteLine($"Невозможно преобразовать {userInput} в число");
+            }           
         }
     }
 }
