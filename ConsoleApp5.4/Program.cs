@@ -16,32 +16,38 @@ namespace ConsoleApp5._4
 
             while (isWorking)
             {
-                Console.WriteLine("1 - Добавить досье\n2 - Показать все досье\n3 - Удалить досье\n4 - Выход");
+                Console.WriteLine("1 - Добавить досье\n2 - Показать все досье\n3 - Удалить досье\n4 - Выход"); 
+                string userInput = Console.ReadLine();
 
-                int userInput = Convert.ToInt32(Console.ReadLine());
-
-                switch (userInput)
+                if (int.TryParse(userInput, out int value))
                 {
-                    case 1:
-                        AddFile(files);
-                    break;
+                    switch (value)
+                    {
+                        case 1:
+                            AddFile(files);
+                            break;
 
-                    case 2:
-                        ShowAllFiles(files);
-                    break;
+                        case 2:
+                            ShowAllFiles(files);
+                            break;
 
-                    case 3:
-                        RemoveFile(files);
-                    break;
+                        case 3:
+                            RemoveFile(files);
+                            break;
 
-                    case 4:
-                       isWorking = false;
-                    break;
+                        case 4:
+                            isWorking = false;
+                            break;
 
-                    default:
-                        Console.WriteLine("Такой функции нет.\n");
-                    break;
+                        default:
+                            Console.WriteLine("Такой функции нет.\n");
+                            break;
+                    }
                 }
+                else
+                {
+                    Console.WriteLine($"Невозможно преобразовать {userInput} в число");
+                }                
             }
         }
 
@@ -49,9 +55,7 @@ namespace ConsoleApp5._4
         {
             Console.WriteLine("\nВведите фамилию и должность.");
             files.Add(Console.ReadLine());
-            Console.WriteLine("\nФайл успешно добавлен.\nДля продолжения нажмите любую клавишу.");
-            Console.ReadKey();
-            Console.Clear();
+            Console.WriteLine("\nФайл успешно добавлен.\n");            
         }
 
         static void ShowAllFiles(List<string> files)
@@ -64,15 +68,11 @@ namespace ConsoleApp5._4
                 {
                     Console.WriteLine(file);
                 }
-                Console.WriteLine("\nДля продолжения нажмите любую клавишу.");
-                Console.ReadKey();
-                Console.Clear();
+                Console.WriteLine();                
             }
             else
             {
-                Console.WriteLine("Файлов нет.\nДля продолжения нажмите любую клавишу.");                
-                Console.ReadKey();
-                Console.Clear();
+                Console.WriteLine("Файлов нет.\n"); 
             }
             
         }
@@ -86,9 +86,7 @@ namespace ConsoleApp5._4
             if(int.TryParse(userInput, out int value))
             {
                 files.RemoveAt(value);
-                Console.WriteLine("Файл полностью удален.\nДля продолжения нажмите любую клавишу.");
-                Console.ReadKey();
-                Console.Clear();
+                Console.WriteLine("Файл полностью удален.\n");                
             }
             else
             {
