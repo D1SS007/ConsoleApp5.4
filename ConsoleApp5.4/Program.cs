@@ -73,8 +73,7 @@ namespace ConsoleApp5._4
             else
             {
                 Console.WriteLine("Файлов нет.\n"); 
-            }
-            
+            }            
         }
 
         static void RemoveFile(List<string> files)
